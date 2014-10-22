@@ -39,8 +39,9 @@ void setup() {
   //noise in bottom 2 frames
   //manipulate = new int[lastRow*video.height * width];
   //noise in all 4 frames
-  manipulate = new int[lastRow*video.height + lastColumn*video.width];
-  
+  //manipulate = new int[lastRow*video.height + lastColumn*video.width];
+  //also noise in all 4 frames
+  manipulate = new int[video.height + video.width];
   
 }
 
