@@ -11,6 +11,7 @@ boolean isCapturing;
 int column;
 int columnCount;
 int lastRow;
+int lastColumn;
 
 int[] manipulate;
 
@@ -26,12 +27,19 @@ void setup() {
   video.start();
   isCapturing = true;
   
-  column = 0;
-  columnCount = width / video.width;
+  // = 640/320 = 2
+  int columnCount = width / video.width;
+  // = 480/240 = 2
   int rowCount = height / video.height;
+  //= 2-1 = 1
   lastRow = rowCount - 1;
+  lastColumn = columnCount - 1;
   
-  manipulate = new int[lastRow*video.height * width];
+  // = 1*240 * 640 = 153,600
+  //noise in bottom 2 frames
+  //manipulate = new int[lastRow*video.height * width];
+  //noise in all 4 frames
+  manipulate = new int[lastRow*video.height + lastColumn*video.width];
   
   
 }
