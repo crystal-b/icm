@@ -28,7 +28,9 @@ void setup() {
   isCapturing = true;
   
   // = 640/320 = 2
-  int columnCount = width / video.width;
+  //int columnCount = width / video.width;
+  //video.width and videoWidth seem to create the same value
+  int columnCount = width / videoWidth;
   // = 480/240 = 2
   int rowCount = height / video.height;
   //= 2-1 = 1
@@ -37,11 +39,11 @@ void setup() {
   
   // = 1*240 * 640 = 153,600
   //noise in bottom 2 frames
-  //manipulate = new int[lastRow*video.height * width];
+   manipulate = new int[lastRow*video.height * width];
   //noise in all 4 frames
   //manipulate = new int[lastRow*video.height + lastColumn*video.width];
   //also noise in all 4 frames
-  manipulate = new int[video.height + video.width];
+  //manipulate = new int[(video.height - 1) + video.width];
   
 }
 
