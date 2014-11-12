@@ -61,6 +61,7 @@ void draw() {
     loc1.play();
     buttonLoc1.showImage();
   }
+
 }
 
 class Button {
@@ -104,6 +105,11 @@ void showImage() {
 }
 
 }
+
+//reload location audio files after mousePressed
+void mouseReleased() {
+    loc1 = minim.loadFile("chainsaw.mp3");
+  }
 
 void stop() {
   main.close();
