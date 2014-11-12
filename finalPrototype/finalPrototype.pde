@@ -25,6 +25,19 @@ float p = PI;
 float pulsing = 0;
 float pulseCenter = 125;
 float pulseC = 50;
+float diameter = 25;
+int loc1X = 622;
+int loc1Y = 655;
+int loc2X = 622;
+int loc2Y = 200;
+int loc3X = 300;
+int loc3Y = 400;
+int loc4X = 500;
+int loc4Y = 600;
+int loc5X = 700;
+int loc5Y = 500;
+int loc6X = 700;
+int loc6Y = 400;
 color c = 255;
 
 void setup() {
@@ -42,9 +55,12 @@ void setup() {
   main.loop();
   
   //park & 64th
-  buttonLoc1 = new Button(622, 655, 25, 25);
-  buttonLoc2 = new Button(300, 300, 25, 25);
-  buttonLoc3 = new Button(800, 500, 25, 25);
+  buttonLoc1 = new Button(loc1X, loc1Y, diameter, diameter);
+  buttonLoc2 = new Button(loc2X, loc2Y, diameter, diameter);
+  buttonLoc3 = new Button(loc3X, loc3Y, diameter, diameter);
+  buttonLoc4 = new Button(loc4X, loc4Y, diameter, diameter);
+  buttonLoc5 = new Button(loc5X, loc5Y, diameter, diameter);
+  buttonLoc6 = new Button(loc6X, loc6Y, diameter, diameter);
   
   photo = loadImage("church.jpg");
 }
@@ -56,12 +72,48 @@ void draw() {
   buttonLoc2.pulse();
   buttonLoc3.display();
   buttonLoc3.pulse();
-  
+  buttonLoc4.display();
+  buttonLoc4.pulse();
+  buttonLoc5.display();
+  buttonLoc5.pulse();
+  buttonLoc6.display();
+  buttonLoc6.pulse();
+  /*
   if (mousePressed) {
-    loc1.play();
-    buttonLoc1.showImage();
+    if (mouseX) {
+      if (mouseY) {
+        loc1.play();
+        buttonLoc1.showImage();
+      }
+      else if(mouseY) {
+        loc2.play();
+        buttonLoc1.showImage(); 
+      }
+    {
+    else if (mouseX) {
+      if (mouseY) {
+        loc3.play();
+        buttonLoc1.showImage();
+      }
+    {
+    else if (mouseX) {
+      if (mouseY) {
+        loc4.play();
+        buttonLoc1.showImage();
+      }
+    {
+    else if (mouseX) {
+      if (mouseY) {
+        loc5.play();
+        buttonLoc1.showImage();
+      }
+      else if(mouseY) {
+        loc6.play();
+        buttonLoc1.showImage();
+      }
+    {
   }
-
+  */
 }
 
 class Button {
