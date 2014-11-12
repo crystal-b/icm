@@ -58,7 +58,9 @@ void draw() {
   
   if (mousePressed) {
     loc1.play();
-    buttonLoc1.showImage();
+    while(loc1.play()) {
+      buttonLoc1.showImage();
+    }
   }
 }
 
