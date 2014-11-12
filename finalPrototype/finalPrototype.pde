@@ -58,10 +58,8 @@ void draw() {
   
   if (mousePressed) {
     loc1.play();
+    buttonLoc1.showImage();
   }
-  while(loc1.isPlaying()) {
-      buttonLoc1.showImage();
-    }
 }
 
 class Button {
@@ -101,8 +99,10 @@ void showImage() {
   /*while(playNoise()) {
     showImage
   }*/
-  photo.resize(0, photoHeight);
-  image(photo, width-255, height-photoHeight);
+  while(loc1.isPlaying()) {
+    photo.resize(0, photoHeight);
+    image(photo, width-255, height-photoHeight);
+  }
 }
 
 }
