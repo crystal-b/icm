@@ -10,7 +10,7 @@ import ddf.minim.*;
 
 //OBJECTS
 Minim minim;
-AudioPlayer main, loc1;
+AudioPlayer main, loc1, loc2, loc3, loc4, loc5, loc6;
 Button buttonLoc1;
 Button buttonLoc2;
 Button buttonLoc3;
@@ -32,8 +32,8 @@ int loc2X = 622;
 int loc2Y = 200;
 int loc3X = 300;
 int loc3Y = 400;
-int loc4X = 500;
-int loc4Y = 600;
+int loc4X = 200;
+int loc4Y = 100;
 int loc5X = 700;
 int loc5Y = 500;
 int loc6X = 700;
@@ -50,6 +50,11 @@ void setup() {
   minim = new Minim(this);
   main = minim.loadFile("spring.mp3");
   loc1 = minim.loadFile("chainsaw.mp3");
+  loc2 = minim.loadFile("metro.mp3");
+  loc3 = minim.loadFile("cableCar.mp3");
+  loc4 = minim.loadFile("metroDoor.mp3");
+  loc5 = minim.loadFile("drill.mp3");
+  loc6 = minim.loadFile("tv.mp3");
   //play background music
   main.play();
   main.loop();
@@ -158,14 +163,58 @@ void showImage() {
 
 }
 
+void mousePressed() {
+  if (mouseX > loc1X - diameter/2 && mouseX < loc1X + diameter/2) {
+      if (mouseY > loc1Y - diameter/2 && mouseY < loc1Y + diameter/2) {
+        loc1.play();
+        //buttonLoc1.showImage();
+      }
+      else if (mouseY > loc2Y - diameter/2 && mouseY < loc2Y + diameter/2) {
+        loc2.play();
+      }
+  }
+    else if (mouseX > loc3X - diameter/2 && mouseX < loc3X + diameter/2) {
+      if (mouseY > loc3Y - diameter/2 && mouseY < loc3Y + diameter/2) {
+        loc3.play();
+      }
+  }
+    else if (mouseX > loc4X - diameter/2 && mouseX < loc4X + diameter/2) {
+      if (mouseY > loc4Y - diameter/2 && mouseY < loc4Y + diameter/2) {
+        loc4.play();
+      }
+  }
+    else if (mouseX > loc5X - diameter/2 && mouseX < loc5X + diameter/2) {
+      if (mouseY > loc5Y - diameter/2 && mouseY < loc5Y + diameter/2) {
+        loc5.play();
+      }
+      else if (mouseY > loc6Y - diameter/2 && mouseY < loc6Y + diameter/2) {
+        loc6.play();
+      }
+  }
+    
+
+}
+
 //reload location audio files after mousePressed
 void mouseReleased() {
     loc1 = minim.loadFile("chainsaw.mp3");
+    loc2 = minim.loadFile("metro.mp3");
+    loc3 = minim.loadFile("cableCar.mp3");
+    loc4 = minim.loadFile("metroDoor.mp3");
+    loc5 = minim.loadFile("drill.mp3");
+    loc6 = minim.loadFile("tv.mp3");
+    
   }
 
 void stop() {
   main.close();
   loc1.close();
+  loc2.close();
+  loc3.close();
+  loc4.close();
+  loc5.close();
+  loc6.close();
+  //spring.close();
   minim.stop();
   super.stop();
 }
