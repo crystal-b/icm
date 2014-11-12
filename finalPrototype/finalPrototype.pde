@@ -6,9 +6,11 @@ http://www.centralchurchnyc.org/?q=ourhistory
 http://www.nycago.org/Organs/NYC/img/CentralPresMadAv1928Ext.jpg
 */
 //LIBRARIES
-
+import ddf.minim.*;
 
 //OBJECTS
+Minim minim;
+AudioPlayer main, loc1;
 Button buttonLoc1;
 Button buttonLoc2;
 Button buttonLoc3;
@@ -31,6 +33,12 @@ void setup() {
   //load map image
   img = loadImage("map.png");
   background(img);
+  //load audio files
+  minim = new Minim(this);
+  main = minim.loadFile("spring.mp3");
+  loc1 = minim.loadFile("chainsaw.mp3");
+  //play background music
+  main.play();
   
   //park & 64th
   buttonLoc1 = new Button(622, 655, 25, 25);
@@ -49,6 +57,7 @@ void draw() {
   buttonLoc3.pulse();
   
   if (mousePressed) {
+    loc1.play();
     buttonLoc1.showImage();
   }
 }
@@ -91,7 +100,14 @@ void showImage() {
     showImage
   }*/
   photo.resize(0, photoHeight);
-  image(photo, width-250, height-photoHeight);
+  image(photo, width-255, height-photoHeight);
 }
 
+}
+
+void stop() {
+  main.close();
+  loc1.close();
+  minim.stop();
+  super.stop();
 }
