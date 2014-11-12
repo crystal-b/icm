@@ -39,6 +39,7 @@ void setup() {
   loc1 = minim.loadFile("chainsaw.mp3");
   //play background music
   main.play();
+  main.loop();
   
   //park & 64th
   buttonLoc1 = new Button(622, 655, 25, 25);
@@ -96,9 +97,6 @@ void pulse() {
   //if}
 
 void showImage() {
-  /*while(playNoise()) {
-    showImage
-  }*/
   while(loc1.isPlaying()) {
     photo.resize(0, photoHeight);
     image(photo, width-255, height-photoHeight);
