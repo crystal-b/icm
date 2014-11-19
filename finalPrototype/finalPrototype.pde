@@ -44,11 +44,12 @@ void setup() {
   size(1117, 681);
   smooth();
   //load map image
-  img = loadImage("map.png");
+  img = loadImage("manbus.pdf");
   background(img);
   //load audio files
   minim = new Minim(this);
-  main = minim.loadFile("spring.mp3");
+  main = minim.loadFile("OOIOOreturnToNew!!!.mp3");
+  //park = minim.loadFile("spring.mp3");
   loc1 = minim.loadFile("chainsaw.mp3");
   loc2 = minim.loadFile("metro.mp3");
   loc3 = minim.loadFile("cableCar.mp3");
