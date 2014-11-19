@@ -29,9 +29,9 @@ float pulseCenter = 125;
 float pulseC = 50;
 float diameter = 25;
 int loc1X = 622;
-int loc1Y = 655;
+int loc1Y = 200;
 int loc2X = 622;
-int loc2Y = 200;
+int loc2Y = 655;
 int loc3X = 300;
 int loc3Y = 400;
 int loc4X = 200;
@@ -41,13 +41,17 @@ int loc5Y = 500;
 int loc6X = 700;
 int loc6Y = 400;
 color c = 255;
+boolean amIPulsing = false;
 
 void setup() {
   size(1631, 5204);
   smooth();
   //load map image
-  img = loadImage("manbus.png");
-  background(img);
+  img = loadImage("map.png");
+  //background(img);
+  //scale image
+  //scale(0.8);
+  image(img,0,0,img.width,img.height);
   //load audio files
   minim = new Minim(this);
   main = minim.loadFile("OOIOOreturnToNew!!!.mp3");
@@ -74,12 +78,28 @@ void setup() {
 }
 
 void draw() {
+  //scale(0.8);
   buttonLoc1.display();
-  buttonLoc1.pulse();
+  if (loc1.isPlaying()) {
+    buttonLoc6.pulsePlaying();
+  }
+  else {
+    buttonLoc1.pulse();
+  }
   buttonLoc2.display();
-  buttonLoc2.pulse();
+    if (loc2.isPlaying()) {
+    buttonLoc1.pulsePlaying();
+  }
+  else {
+    buttonLoc2.pulse();
+  }
   buttonLoc3.display();
-  buttonLoc3.pulse();
+    if (loc3.isPlaying()) {
+    buttonLoc3.pulsePlaying();
+  }
+  else {
+    buttonLoc3.pulse();
+  }
   buttonLoc4.display();
   buttonLoc4.pulse();
   buttonLoc5.display();
@@ -94,7 +114,7 @@ class Button {
   float buttonWidth;
   float buttonHeight;
   //variable for resizing location photos
-  int photoHeight = 200;
+  //int photoHeight = 200;
   
   Button(float tempButtonX, float tempButtonY, float tempButtonWidth, float tempButtonHeight) {
     buttonX = tempButtonX;
@@ -118,6 +138,13 @@ class Button {
     fill(c);
   }
   
+  void pulsePlaying() {
+    pulsing = pulseCenter + pulseC*sin(p);
+    p = p + .02;
+    c = color(pulsing, 0, 0);
+    fill(c);
+  }
+  
   
   /*
   //show image when button is pressed
@@ -134,23 +161,31 @@ void mousePressed() {
   if (mouseX > loc1X - diameter/2 && mouseX < loc1X + diameter/2) {
       if (mouseY > loc1Y - diameter/2 && mouseY < loc1Y + diameter/2) {
         loc1.play();
+        loc1.rewind();
+        //cursor(ARROW);
         //buttonLoc1.showImage();
       }
       else if (mouseY > loc2Y - diameter/2 && mouseY < loc2Y + diameter/2) {
         loc2.play();
+        loc2.rewind();
+        //cursor(ARROW);
       }
   }
-    else if (mouseX > loc3X - diameter/2 && mouseX < loc3X + diameter/2) {
+  else {
+    //cursor(HAND);
+  }
+  if (mouseX > loc3X - diameter/2 && mouseX < loc3X + diameter/2) {
       if (mouseY > loc3Y - diameter/2 && mouseY < loc3Y + diameter/2) {
         loc3.play();
+        loc3.rewind();
       }
   }
-    else if (mouseX > loc4X - diameter/2 && mouseX < loc4X + diameter/2) {
+  if (mouseX > loc4X - diameter/2 && mouseX < loc4X + diameter/2) {
       if (mouseY > loc4Y - diameter/2 && mouseY < loc4Y + diameter/2) {
         loc4.play();
       }
   }
-    else if (mouseX > loc5X - diameter/2 && mouseX < loc5X + diameter/2) {
+  if (mouseX > loc5X - diameter/2 && mouseX < loc5X + diameter/2) {
       if (mouseY > loc5Y - diameter/2 && mouseY < loc5Y + diameter/2) {
         loc5.play();
       }
@@ -164,9 +199,9 @@ void mousePressed() {
 
 //reload location audio files after mouse is pressed and released
 void mouseReleased() {
-    loc1 = minim.loadFile("chainsaw.mp3");
-    loc2 = minim.loadFile("metro.mp3");
-    loc3 = minim.loadFile("cableCar.mp3");
+    //loc1 = minim.loadFile("chainsaw.mp3");
+    //loc2 = minim.loadFile("metro.mp3");
+    //loc3 = minim.loadFile("cableCar.mp3");
     loc4 = minim.loadFile("metroDoor.mp3");
     loc5 = minim.loadFile("drill.mp3");
     loc6 = minim.loadFile("tv.mp3");
