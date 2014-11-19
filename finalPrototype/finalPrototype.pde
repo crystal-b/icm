@@ -1,5 +1,7 @@
 /*
 SOURCES
+The Roaring 20s by Emily Thompson and Scott Mahoy
+http://vectorsdev.usc.edu/NYCsound/777b.html
 mod of strobe method from www.openprocessing.org/sketch/45098
 Location 1) park & 64th
 http://www.centralchurchnyc.org/?q=ourhistory
@@ -41,10 +43,10 @@ int loc6Y = 400;
 color c = 255;
 
 void setup() {
-  size(1117, 681);
+  size(1631, 5204);
   smooth();
   //load map image
-  img = loadImage("manbus.pdf");
+  img = loadImage("manbus.png");
   background(img);
   //load audio files
   minim = new Minim(this);
@@ -68,7 +70,7 @@ void setup() {
   buttonLoc5 = new Button(loc5X, loc5Y, diameter, diameter);
   buttonLoc6 = new Button(loc6X, loc6Y, diameter, diameter);
   
-  photo = loadImage("church.jpg");
+  //photo = loadImage("church.jpg");
 }
 
 void draw() {
@@ -84,42 +86,6 @@ void draw() {
   buttonLoc5.pulse();
   buttonLoc6.display();
   buttonLoc6.pulse();
-  /*
-  if (mousePressed) {
-    if (mouseX) {
-      if (mouseY) {
-        loc1.play();
-        buttonLoc1.showImage();
-      }
-      else if(mouseY) {
-        loc2.play();
-        buttonLoc1.showImage(); 
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc3.play();
-        buttonLoc1.showImage();
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc4.play();
-        buttonLoc1.showImage();
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc5.play();
-        buttonLoc1.showImage();
-      }
-      else if(mouseY) {
-        loc6.play();
-        buttonLoc1.showImage();
-      }
-    {
-  }
-  */
 }
 
 class Button {
@@ -137,31 +103,31 @@ class Button {
     buttonHeight = tempButtonHeight;
   }
 
-
-void display() {
-  smooth();
-  noStroke();
-  //fill(c);
-  ellipse(buttonX, buttonY, buttonWidth, buttonHeight);
-}
-
-void pulse() {
-  pulsing = pulseCenter + pulseC*sin(p);
-  p = p + .01;
-  c = color(0, pulsing, 0);
-  fill(c);
-}
-
-//void playNoise() {
-  //if}
-
-void showImage() {
-  while(loc1.isPlaying()) {
-    photo.resize(0, photoHeight);
-    image(photo, width-255, height-photoHeight);
+  //show button
+  void display() {
+    smooth();
+    noStroke();
+    ellipse(buttonX, buttonY, buttonWidth, buttonHeight);
   }
-}
-
+  
+  //pulse button
+  void pulse() {
+    pulsing = pulseCenter + pulseC*sin(p);
+    p = p + .02;
+    c = color(0, pulsing, 0);
+    fill(c);
+  }
+  
+  
+  /*
+  //show image when button is pressed
+  void showImage() {
+    while(loc1.isPlaying()) {
+      photo.resize(0, photoHeight);
+      image(photo, width-255, height-photoHeight);
+    }
+  }
+  */
 }
 
 void mousePressed() {
@@ -196,7 +162,7 @@ void mousePressed() {
 
 }
 
-//reload location audio files after mousePressed
+//reload location audio files after mouse is pressed and released
 void mouseReleased() {
     loc1 = minim.loadFile("chainsaw.mp3");
     loc2 = minim.loadFile("metro.mp3");
@@ -204,9 +170,9 @@ void mouseReleased() {
     loc4 = minim.loadFile("metroDoor.mp3");
     loc5 = minim.loadFile("drill.mp3");
     loc6 = minim.loadFile("tv.mp3");
-    
   }
 
+//close audio files
 void stop() {
   main.close();
   loc1.close();
