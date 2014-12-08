@@ -164,44 +164,38 @@ void showImage() {
 void mousePressed() {
   if (mouseX > loc1X - diameter/2 && mouseX < loc1X + diameter/2) {
       if (mouseY > loc1Y - diameter/2 && mouseY < loc1Y + diameter/2) {
+        loc1.rewind();
         loc1.play();
       }
       else if (mouseY > loc2Y - diameter/2 && mouseY < loc2Y + diameter/2) {
+        loc2.rewind();
         loc2.play();
       }
   }
   else if (mouseX > loc3X - diameter/2 && mouseX < loc3X + diameter/2) {
       if (mouseY > loc3Y - diameter/2 && mouseY < loc3Y + diameter/2) {
+        loc3.rewind();
         loc3.play();
       }
   }
   else if (mouseX > loc4X - diameter/2 && mouseX < loc4X + diameter/2) {
       if (mouseY > loc4Y - diameter/2 && mouseY < loc4Y + diameter/2) {
+        loc4.rewind();
         loc4.play();
       }
   }
   else if (mouseX > loc5X - diameter/2 && mouseX < loc5X + diameter/2) {
       if (mouseY > loc5Y - diameter/2 && mouseY < loc5Y + diameter/2) {
+        loc5.rewind();
         loc5.play();
       }
       else if (mouseY > loc6Y - diameter/2 && mouseY < loc6Y + diameter/2) {
+        loc6.rewind();
         loc6.play();
       }
   }
-    
-
 }
 
-//reload location audio files after mousePressed
-void mouseReleased() {
-    loc1 = minim.loadFile("NoiseClothes.mp3");
-    loc2 = minim.loadFile("NoiseMetro.mp3");
-    loc3 = minim.loadFile("NoiseSewer.mp3");
-    loc4 = minim.loadFile("NoisePanama.mp3");
-    loc5 = minim.loadFile("NoiseHarborM.mp3");
-    loc6 = minim.loadFile("NoiseTruck.mp3");
-    
-  }
 
 void stop() {
   //main.close();
