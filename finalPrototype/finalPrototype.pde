@@ -159,8 +159,10 @@ class Avenue {
     aveW = tempAveW;
     aveH = tempAveH;
   }
-
-  void drawAve() {
+  
+  //i can't get the avenues to appear and the Avenue class changes the fill
+ //of the first button to white???
+   void drawAve() {
     smooth();
     noStroke();
     rect(aveX, aveY, aveW, aveH);  
