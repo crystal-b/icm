@@ -81,42 +81,6 @@ void draw() {
   buttonLoc5.pulse();
   buttonLoc6.display();
   buttonLoc6.pulse();
-  /*
-  if (mousePressed) {
-    if (mouseX) {
-      if (mouseY) {
-        loc1.play();
-        buttonLoc1.showImage();
-      }
-      else if(mouseY) {
-        loc2.play();
-        buttonLoc1.showImage(); 
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc3.play();
-        buttonLoc1.showImage();
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc4.play();
-        buttonLoc1.showImage();
-      }
-    {
-    else if (mouseX) {
-      if (mouseY) {
-        loc5.play();
-        buttonLoc1.showImage();
-      }
-      else if(mouseY) {
-        loc6.play();
-        buttonLoc1.showImage();
-      }
-    {
-  }
-  */
 }
 
 class Button {
@@ -148,9 +112,6 @@ void pulse() {
   c = color(0, pulsing, 0);
   fill(c);
 }
-
-//void playNoise() {
-  //if}
 
 void showImage() {
   while(loc1.isPlaying()) {
