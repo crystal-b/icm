@@ -17,6 +17,12 @@ Button buttonLoc3;
 Button buttonLoc4;
 Button buttonLoc5;
 Button buttonLoc6;
+Avenue ave11;
+Avenue ave10;
+Avenue avePark;
+Avenue ave4;
+
+
 
 //GLOBAL VARIABLES
 PImage img;
@@ -39,6 +45,14 @@ int loc5Y = 500;
 int loc6X = 695;
 int loc6Y = 400;
 color c = 255;
+int avenueHeight = height;
+int avenueWidth = 10;
+int avenueY = 0;
+int ave11X = 200;
+int ave10X = 400;
+int aveParkX = 622;
+int ave4X = 695;
+
 
 void setup() {
   size(1117, 681);
@@ -59,7 +73,13 @@ void setup() {
   //main.play();
   //main.loop();
   
-  //park & 64th
+  //avenues
+  ave11 = new Avenue(ave11X, avenueY, avenueWidth, avenueHeight);
+  ave10 = new Avenue(ave10X, avenueY, avenueWidth, avenueHeight);
+  avePark = new Avenue(aveParkX, avenueY, avenueWidth, avenueHeight);
+  ave4 = new Avenue(ave4X, avenueY, avenueWidth, avenueHeight);
+  
+  //hotspots
   buttonLoc1 = new Button(loc1X, loc1Y, diameter, diameter);
   buttonLoc2 = new Button(loc2X, loc2Y, diameter, diameter);
   buttonLoc3 = new Button(loc3X, loc3Y, diameter, diameter);
@@ -69,6 +89,10 @@ void setup() {
 }
 
 void draw() {
+  ave11.drawAve();
+  ave10.drawAve();
+  avePark.drawAve();
+  ave4.drawAve();
   buttonLoc1.display();
   buttonLoc1.pulse();
   buttonLoc2.display();
@@ -99,28 +123,55 @@ class Button {
   }
 
 
-void display() {
-  smooth();
-  noStroke();
-  //fill(c);
-  ellipse(buttonX, buttonY, buttonWidth, buttonHeight);
-}
-
-void pulse() {
-  pulsing = pulseCenter + pulseC*sin(p);
-  p = p + .01;
-  c = color(0, pulsing, 0);
-  fill(c);
-}
-
-void showImage() {
-  while(loc1.isPlaying()) {
-    photo.resize(0, photoHeight);
-    image(photo, width-255, height-photoHeight);
+  void display() {
+    smooth();
+    noStroke();
+    //fill(c);
+    ellipse(buttonX, buttonY, buttonWidth, buttonHeight);
+  }
+  
+  void pulse() {
+    pulsing = pulseCenter + pulseC*sin(p);
+    p = p + .01;
+    c = color(0, pulsing, 0);
+    fill(c);
+  }
+  
+  void showImage() {
+    while(loc1.isPlaying()) {
+      photo.resize(0, photoHeight);
+      image(photo, width-255, height-photoHeight);
+    }
   }
 }
 
+
+class Avenue {
+  //draw a line that runs the height of the window and width of the street
+  float aveX;
+  float aveY;
+  float aveW;
+  float aveH;
+  
+  Avenue(float tempAveX, float tempAveY, float tempAveW, float tempAveH) {
+    aveX = tempAveX;
+    aveY = tempAveY;
+    aveW = tempAveW;
+    aveH = tempAveH;
+  }
+
+  void drawAve() {
+    smooth();
+    noStroke();
+    rect(aveX, aveY, aveW, aveH);  
+  }
+
+//void wiggle() {}
+//make line vibrate while audio track is playing
+
+
 }
+
 
 void mousePressed() {
   if (mouseX > loc1X - diameter/2 && mouseX < loc1X + diameter/2) {
